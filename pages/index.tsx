@@ -2,10 +2,9 @@ import { NextPage } from 'next/types';
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import Header from '@/components/header'
-import { getPhotos } from '@/redux/actions';
 import Grid from '@/components/grid'
-import { Provider } from 'react-redux';
 import Showcase from '@/components/showcase';
+// import '@/styles/globals.module.scss'
 
 type Props = {
   photos: Photo[]

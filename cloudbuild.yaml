@@ -10,3 +10,5 @@ steps:
    args: ['run', 'deploy', 'agencyAnalytics', '--image', 'gcr.io/agencyAnalytics/agencyAnalytics', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
 images:
 - 'gcr.io/agencyAnalytics/agencyAnalytics'
+options:
+  logging: CLOUD_LOGGING_ONLY

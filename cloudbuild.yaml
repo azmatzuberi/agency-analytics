@@ -1,13 +1,13 @@
 steps:
  # build the container
- - name: 'gcr.io/agencybuilders/docker'
-   args: ['build', '--network=agencybuild','-t', 'gcr.io/agencyanalytics/agencyanalytics', '.']
+ - name: 'gcr.io/cloud-builders/docker'
+   args: ['build', '--network=cloudbuild','-t', 'gcr.io/agencyanalytics/agencyanalytics', '.']
  # push the container image to Container Registry
- - name: 'gcr.io/agencybuilders/docker'
+ - name: 'gcr.io/cloud-builders/docker'
    args: ['push', 'gcr.io/agencyanalytics/agencyanalytics']
- # Deploy container image to agency Run
- - name: 'gcr.io/agencybuilders/gagency'
-   args: ['run', 'deploy', 'agencyanalytics', '--image', 'gcr.io/agencyanalytics/agencyAnalytics', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
+ # Deploy container image to Cloud Run
+ - name: 'gcr.io/cloud-builders/gcloud'
+   args: ['run', 'deploy', 'agencyanalytics', '--image', 'gcr.io/agencyanalytics/agencyanalytics', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']
 images:
 - 'gcr.io/agencyanalytics/agencyanalytics'
 options:

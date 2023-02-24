@@ -22,6 +22,11 @@ type PhotoState = {
 
 type PhotoAction = {
     type: string
+    photos: Photos
+}
+
+type PhotoRemoveAction = {
+    type: string
     photo: Photo
 }
 

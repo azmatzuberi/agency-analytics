@@ -4,34 +4,59 @@ import Head from 'next/head'
 import Header from '@/components/header'
 import Grid from '@/components/grid'
 import Showcase from '@/components/showcase';
-// import '@/styles/globals.module.scss'
+import { applyMiddleware, Store } from "redux";
+import { connect, Provider  } from "react-redux";
+import { configureStore } from '@reduxjs/toolkit';
+// import { store }  from "@/store/store-update"
+import thunk from "redux-thunk";
+import reducer from "@/store/reducer";
+import photoReducer from "@/store/slice"
+
+import {useAppSelector, useAppDispatch} from "@/store/hooks"
+import {selectPhotos} from "@/store/slice"
 
 type Props = {
   photos: Photo[]
 }
 
+// Add Photos action
+// import { addPhotos } from '@/store/actionCreators';
+
+// const store: Store<PhotoState, PhotoAction> & {
+//   dispatch: DispatchType;
+// } = configureStore({reducer});
 
 const Home = ({ photos }: Props) => {
+  const store = configureStore({reducer});
+  // const photo = useAppSelector(selectPhotos);
+  const dispatch = useAppDispatch();
+
   return (
     <>
+     {/* <Provider store={store}> */}
       <Head>
         <title>AgencyAnalytics</title>
         <meta name="description" content="Generated for code challenge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className='container'>
-        <div className='row'>
-          <div className="grid-column col-lg-8">
-            <Header />
-            <Grid data={photos}/>
+        <section className='container'>
+          <div className='row'>
+            <div className="grid-column col-lg-8">
+              <Header />
+              { photos && 
+                <Grid data={photos}/>
+              }
+            </div>
+            <div className="showcase-column col-lg-4">
+              { photos && 
+              <Showcase photo={photos[0]} />
+              }
+            </div>
           </div>
-          <div className="showcase-column col-lg-4">
-            <Showcase photo={photos[0]} />
-          </div>
-        </div>
-      </section>
-    </>
+        </section>
+        {/* </Provider> */}
+      </>
   )
 }
 
@@ -46,8 +71,13 @@ export const getStaticProps: GetStaticProps = async () => {
   photos.sort(function(a: Photo,b: Photo){
     return +new Date(b.createdAt) - +new Date(a.createdAt);
   });
-  console.log(photos)
   return { props: { photos }}
 }
+
+// const mapStateToProps = function(state: any) {
+//   return {
+//     photos: state.photos,
+//   }
+// }
 
 export default Home

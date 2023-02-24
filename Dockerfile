@@ -6,14 +6,14 @@ COPY package.json package-lock.json ./
 RUN npm ci --only=production
 
 # Rebuild the source code only when needed
-FROM node:14-alpine AS builder
+FROM node:16-alpine AS builder
 WORKDIR /app
 COPY . .
 COPY --from=dependencies /app/node_modules ./node_modules
 RUN npm run build
 
 # Production image, copy all the files and run next
-FROM node:14-alpine AS runner
+FROM node:16-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
@@ -21,11 +21,18 @@ ENV NODE_ENV production
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
 
-COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
+COPY --from=builder --chown=nextjs:nodejs app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
-USER nextjs
+# RUN npm i
+# RUN mkdir -p /app/node_modules/.cache && chmod -R 777 /app/node_modules/.cache/
+
+COPY . /app
+
+USER $user
 EXPOSE 3000
+
+RUN npm run build
 
 CMD ["npm", "start"]

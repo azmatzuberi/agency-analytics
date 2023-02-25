@@ -31,7 +31,7 @@ const reducer = (
             photos: data
             }
         case actionTypes.REMOVE_PHOTO:
-            const updatedPhoto: Photo["id"] = state.photos.filter(
+            const updatedPhoto: Photo = state.photos.filter(
             photo => photo.id !== action.photo.id
             )
         return {
@@ -40,12 +40,10 @@ const reducer = (
         }
         case actionTypes.SELECT_PHOTO:
             console.log("JOKEW",action.photo)
-            const selectPhoto: Photo["id"] = state.photos.filter(
-                photo => photo.id !== action.photo.id
-            )
+            const selectPhoto: Photo = action.photo
         return {
           ...state,
-          photos: selectPhoto,
+          photo: selectPhoto,
         }
     default:
         return state

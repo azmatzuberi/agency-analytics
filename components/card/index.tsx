@@ -12,14 +12,14 @@ const Card = ({photo} : {photo: Photo}) => {
         return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`
     }
     
-    const selectPhotoCard = async (e: EventTarget) => {
-        console.log(e.id)
-        dispatch(selectPhoto(e.id))
+    const selectPhotoCard = async (photo: Photo) => {
+        console.log(photo)
+        dispatch(selectPhoto(photo))
         
     }
 
     return (
-    <div className="card-outline col-lg-3" onClick={(e) => {selectPhotoCard(e.target)}}>
+    <div className="card-outline col-lg-3" onClick={(e) => {selectPhotoCard(photo)}}>
         <div className={photo.id}>
             <div className="card">
                 <img id={photo.id} src={photo.url} alt={photo.filename} className="image" />

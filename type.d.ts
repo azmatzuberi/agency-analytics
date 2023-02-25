@@ -1,4 +1,5 @@
 interface Photo {
+    filter(arg0: (photo: any) => boolean): Photo;
     id: Key | null | undefined;
     url: string
     filename: string

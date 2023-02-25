@@ -11,7 +11,7 @@ const Grid = ({photos}: {photos: Photo[]} ): JSX.Element => {
         <div className="grid">
             <div>
                 <div className='row'>
-                    { photos.map((photo: Photo) => <Card key={photo.id} photo={photo} idCode={photo.id} /> )}
+                    { photos.map((photo: Photo) => <Card key={photo.id} photo={photo} /> )}
                 </div>
             </div>
         </div>

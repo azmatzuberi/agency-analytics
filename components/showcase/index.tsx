@@ -1,4 +1,6 @@
-const Showcase = ({ photo }: { photo: Photo }) => {
+import { connect } from 'react-redux'
+
+const Showcase = ({ photo }: { photo: Photo["id"] }) => {
     function formatBytes(bytes: number, decimals = 2) {
         if (!+bytes) return '0 Bytes'
         const k = 1024
@@ -49,4 +51,10 @@ const Showcase = ({ photo }: { photo: Photo }) => {
     );
 }
 
-export default Showcase;
+function mapStateToProps(state: any) {
+    return {
+        photo: state.reducer.photo
+    };
+}
+
+export default connect(mapStateToProps)(Showcase);

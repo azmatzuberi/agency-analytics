@@ -50,7 +50,7 @@ const Home = () => {
               <Grid />
             </div>
             <div className="showcase-column col-lg-4">
-              {/* <Showcase /> */}
+              <Showcase />
             </div>
           </div>
         </section>

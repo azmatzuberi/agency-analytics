@@ -1,12 +1,15 @@
 import * as actionTypes from "./actionTypes"
+import { Dispatch } from "redux";
 
 export function addPhotos(photos: Photos) {
-  const action: PhotoAction = {
-    type: actionTypes.ADD_PHOTOS,
-    photos,
-  }
-
-  return simulateHttpRequest(action)
+    console.log("1.", photos)
+    const action: PhotoAction = {
+        type: actionTypes.ADD_PHOTOS,
+        photos,
+    }
+    return (dispatch: DispatchType) => {
+        dispatch(action)
+    }
 }
 
 export function removePhoto(photo: Photo) {

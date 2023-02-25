@@ -31,7 +31,8 @@ type PhotoRemoveAction = {
 }
 
 type Photos = {
-    photo: [Photo]
+    type: array,
+    photos: Photo[]
 }
 
 type DispatchType = (args: PhotoAction) => PhotoAction

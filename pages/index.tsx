@@ -14,9 +14,11 @@ import photoReducer from "@/store/slice"
 
 import {useAppSelector, useAppDispatch} from "@/store/hooks"
 import {selectPhotos} from "@/store/slice"
+import { useEffect } from 'react';
+import { addPhotos } from '@/store/actionCreators';
 
 type Props = {
-  photos: Photo[]
+  photos: Photos
 }
 
 // Add Photos action
@@ -30,10 +32,15 @@ const Home = ({ photos }: Props) => {
   const store = configureStore({reducer});
   // const photo = useAppSelector(selectPhotos);
   const dispatch = useAppDispatch();
+  // useEffect(() => {
+    setTimeout(() => {
+      dispatch(addPhotos(photos))
+      console.log("HEY", photos)
+    }, 2000)
+  // },[])
 
   return (
     <>
-     {/* <Provider store={store}> */}
       <Head>
         <title>AgencyAnalytics</title>
         <meta name="description" content="Generated for code challenge" />
@@ -55,7 +62,6 @@ const Home = ({ photos }: Props) => {
             </div>
           </div>
         </section>
-        {/* </Provider> */}
       </>
   )
 }
@@ -71,6 +77,7 @@ export const getStaticProps: GetStaticProps = async () => {
   photos.sort(function(a: Photo,b: Photo){
     return +new Date(b.createdAt) - +new Date(a.createdAt);
   });
+  
   return { props: { photos }}
 }
 

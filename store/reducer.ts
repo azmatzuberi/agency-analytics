@@ -6,15 +6,15 @@ const initialState: PhotoState = {
 
 const reducer = (
     state: PhotoState = initialState,
-    action: PhotoAction
-  ): PhotoState => {
+    action: any
+  ): any => {
     switch (action.type) {
-      case actionTypes.ADD_PHOTO:
-        const newPhoto: Photo = {
-          id: Math.random(), // not really unique
-        }
+        
+      case actionTypes.ADD_PHOTOS:
+        const data = action.photos
         return {
           ...state,
+          photos: data
         }
       case actionTypes.REMOVE_PHOTO:
         const updatedPhoto: Photo[] = state.photos.filter(
@@ -24,8 +24,9 @@ const reducer = (
           ...state,
           photos: updatedPhoto,
         }
+    default:
+        return state
     }
-    return state
 }
   
 export default reducer

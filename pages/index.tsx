@@ -10,34 +10,30 @@ import { configureStore } from '@reduxjs/toolkit';
 // import { store }  from "@/store/store-update"
 import thunk from "redux-thunk";
 import reducer from "@/store/reducer";
-import photoReducer from "@/store/slice"
+import photoReducer from "@/store/slice-b"
 
 import {useAppSelector, useAppDispatch} from "@/store/hooks"
-import {selectPhotos} from "@/store/slice"
+// import {selectPhotos} from "@/store/slice-b"
 import { useEffect } from 'react';
 import { addPhotos } from '@/store/actionCreators';
+import React from 'react';
 
-type Props = {
-  photos: Photos
-}
-
-// Add Photos action
-// import { addPhotos } from '@/store/actionCreators';
-
-// const store: Store<PhotoState, PhotoAction> & {
-//   dispatch: DispatchType;
-// } = configureStore({reducer});
-
-const Home = ({ photos }: Props) => {
-  const store = configureStore({reducer});
-  // const photo = useAppSelector(selectPhotos);
-  const dispatch = useAppDispatch();
-  // useEffect(() => {
-    setTimeout(() => {
-      dispatch(addPhotos(photos))
-      console.log("HEY", photos)
-    }, 2000)
-  // },[])
+const Home = () => {
+    const dispatch = useAppDispatch();
+    React.useEffect = async () => {
+      const response = await fetch('https://agencyanalytics-api.vercel.app/images.json', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+      },
+    })
+    const photos = await response.json()
+    photos.sort(function(a: Photo,b: Photo){
+      return +new Date(b.createdAt) - +new Date(a.createdAt);
+    });
+    
+    dispatch(addPhotos(photos))
+  }, []
 
   return (
     <>
@@ -51,14 +47,10 @@ const Home = ({ photos }: Props) => {
           <div className='row'>
             <div className="grid-column col-lg-8">
               <Header />
-              { photos && 
-                <Grid data={photos}/>
-              }
+              <Grid />
             </div>
             <div className="showcase-column col-lg-4">
-              { photos && 
-              <Showcase photo={photos[0]} />
-              }
+              {/* <Showcase /> */}
             </div>
           </div>
         </section>
@@ -66,25 +58,36 @@ const Home = ({ photos }: Props) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => { 
-  const response = await fetch('https://agencyanalytics-api.vercel.app/images.json', {
-    method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-    },
-  })
-  const photos = await response.json()
-  photos.sort(function(a: Photo,b: Photo){
-    return +new Date(b.createdAt) - +new Date(a.createdAt);
-  });
+// export const getStaticProps: GetStaticProps = async () => { 
+//   const response = await fetch('https://agencyanalytics-api.vercel.app/images.json', {
+//     method: 'GET',
+//     headers: {
+//       'Accept': 'application/json',
+//     },
+//   })
+//   const photos = await response.json()
+//   photos.sort(function(a: Photo,b: Photo){
+//     return +new Date(b.createdAt) - +new Date(a.createdAt);
+//   });
   
-  return { props: { photos }}
-}
+//   return { props: { photos }}
+// }
 
-// const mapStateToProps = function(state: any) {
-//   return {
-//     photos: state.photos,
-//   }
+// Home.getInitialProps = async (ctx: any) => {
+//   // eslint-disable-next-line react-hooks/rules-of-hooks
+//   const dispatch = useAppDispatch();
+//   const response = await fetch('https://agencyanalytics-api.vercel.app/images.json', {
+//     method: 'GET',
+//     headers: {
+//       'Accept': 'application/json',
+//     },
+//   })
+//   const photos = await response.json()
+//   photos.sort(function(a: Photo,b: Photo){
+//     return +new Date(b.createdAt) - +new Date(a.createdAt);
+//   });
+  
+//   dispatch(addPhotos(photos))
 // }
 
 export default Home

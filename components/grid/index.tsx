@@ -5,18 +5,25 @@ import { Provider, connect } from 'react-redux'
 import { NextPage } from 'next/types';
 // import { wrapper } from '@/redux/store';
 
-const Grid = ({data}: {data: Photo[]} ): JSX.Element => {
+const Grid = ({photos}: {photos: Photo[]} ): JSX.Element => {
  
     return (
         <div className="grid">
             <div>
                 <div className='row'>
-                    { data.map((photo: Photo) => <Card key={photo.id} photo={ photo } /> )}
+                    { photos.map((photo: Photo) => <Card key={photo.id} photo={photo} idCode={photo.id} /> )}
                 </div>
             </div>
         </div>
     );
 }
 
-export default Grid
+function mapStateToProps(state: any) {
+    return {
+        photos: state.reducer.photos
+    };
+}
+
+export default connect(mapStateToProps)(Grid);
+// export default Grid
 

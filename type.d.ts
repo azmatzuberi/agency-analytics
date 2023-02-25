@@ -1,6 +1,5 @@
 interface Photo {
-    filter(arg0: (photo: any) => boolean): Photo;
-    id: Key | null | undefined;
+    id: Key | null | undefined,
     url: string
     filename: string
     createdAt: String,
@@ -11,7 +10,6 @@ interface Photo {
     resolution: {width: number, height: number}
     updatedAt: String,
     favorited: boolean
-    map: Function
 }
 
 type PhotoState = {

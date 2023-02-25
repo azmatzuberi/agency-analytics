@@ -14,7 +14,6 @@ const initialState: PhotoState = {
     resolution: {height: 72, width: 72},
     updatedAt: "2022-06-26T20:14:53.357Z",
     favorited: false,
-    map: function(){},
   }
 }
 
@@ -25,10 +24,10 @@ const reducer = (
     switch (action.type) {
         
         case actionTypes.ADD_PHOTOS:
-            const data = action.photos
+            const photos = action.photos
             return {
-            ...state,
-            photos: data
+              ...state,
+              photos
             }
         case actionTypes.REMOVE_PHOTO:
             const updatedPhoto: Photo = state.photos.filter(
@@ -39,7 +38,6 @@ const reducer = (
           photos: updatedPhoto,
         }
         case actionTypes.SELECT_PHOTO:
-            console.log("JOKEW",action.photo)
             const selectPhoto: Photo = action.photo
         return {
           ...state,

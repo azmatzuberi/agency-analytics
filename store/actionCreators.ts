@@ -11,7 +11,6 @@ export function addPhotos(photos: Photos) {
 }
 
 export function selectPhoto(photo: Photo) {
-    console.log("Hey", photo)
     const action: PhotoAction = {
         type: actionTypes.SELECT_PHOTO,
         photo,

@@ -7,7 +7,7 @@ const FavoriteGrid = ({favorites}: {favorites: Photos}) => {
         <div className="grid">
             <div>
                 <div className='row'>
-                    {/* {favorites && favorites.map((photo: Photo) => <Card key={photo.filename} photo={photo} />)} */}
+                    {favorites && favorites.map((photo: Photo) => <Card key={photo.filename} photo={photo} />)}
                 </div>
             </div>
         </div>

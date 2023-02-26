@@ -6,42 +6,42 @@ import {addPhotos, getFavorites} from '@/store/actionCreators';
 import React from 'react';
 
 const Home = () => {
-  //   const dispatch = useAppDispatch();
-  //   React.useEffect = async () => {
-  //     const response = await fetch('https://agencyanalytics-api.vercel.app/images.json', {
-  //     method: 'GET',
-  //     headers: {
-  //         'Accept': 'application/json',
-  //       },
-  //     })
-  //     const photos = await response.json()
-  //     photos.sort((a: any, b: any) => a.createAt.getTime() - b.createdAt.getTime());
+    const dispatch = useAppDispatch();
+    React.useEffect = async () => {
+      const response = await fetch('https://agencyanalytics-api.vercel.app/images.json', {
+      method: 'GET',
+      headers: {
+          'Accept': 'application/json',
+        },
+      })
+      const photos = await response.json()
+      photos.sort((a: any, b: any) => a.createAt - b.createdAt);
       
-  //     dispatch(addPhotos(photos))
-  //     const favorites = photos.filter((favorite: Photo) => favorite.favorited === true);
-  //     dispatch(getFavorites(favorites))
-  //   }, []
+      dispatch(addPhotos(photos))
+      const favorites = photos.filter((favorite: Photo) => favorite.favorited === true);
+      dispatch(getFavorites(favorites))
+    }, []
 
-  // return (
-  //   <>
-  //     <Head>
-  //       <title>AgencyAnalytics</title>
-  //       <meta name="description" content="Generated for code challenge" />
-  //       <meta name="viewport" content="width=device-width, initial-scale=1" />
-  //       <link rel="icon" href="/favicon.ico" />
-  //     </Head>
-  //       <section className='container'>
-  //         <div className='row'>
-  //           <div className="grid-column col-lg-8">
-  //             <Container />
-  //           </div>
-  //           <div className="showcase-column col-lg-4">
-  //             <Showcase />
-  //           </div>
-  //         </div>
-  //       </section>
-  //     </>
-  // )
+  return (
+    <>
+      <Head>
+        <title>AgencyAnalytics</title>
+        <meta name="description" content="Generated for code challenge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+        <section className='container'>
+          <div className='row'>
+            <div className="grid-column col-lg-8">
+              <Container />
+            </div>
+            <div className="showcase-column col-lg-4">
+              <Showcase />
+            </div>
+          </div>
+        </section>
+      </>
+  )
 }
 
 export default Home

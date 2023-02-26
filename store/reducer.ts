@@ -33,9 +33,11 @@ const reducer = (
           }
         case actionTypes.REMOVE_PHOTO:
           const images = state.photos.filter((item: Photo) => item.id !== action.photo.id)
+          const favoritesList = state.favorites.filter((item: Photo) => item.id !== action.photo.id)
           return {
             ...state,
-            photos: images
+            photos: images,
+            favorites: favoritesList
           }
         case actionTypes.SELECT_PHOTO:
             const selectPhoto: Photo = action.photo

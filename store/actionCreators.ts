@@ -42,7 +42,6 @@ export function getFavorites(favorites: Photos) {
 }
 
 export function addToFavorites(favorite: Photo) {
-  favorite.favorited = true
   const action: FavoriteAction = {
     type: actionTypes.ADD_TO_FAVORITES,
     favorite,

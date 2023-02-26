@@ -1,8 +1,11 @@
 import {useAppDispatch} from '@/store/hooks';
 import {connect} from 'react-redux'
 import {addToFavorites, removePhoto} from '@/store/actionCreators';
+import React, { useState } from 'react';
 
 const Showcase = ({ photo }: { photo: Photo["id"] }) => {
+
+    const [showAlert, setShowAlert] = useState(false);
 
     const dispatch = useAppDispatch();
     function formatBytes(bytes: number, decimals = 2) {
@@ -18,6 +21,10 @@ const Showcase = ({ photo }: { photo: Photo["id"] }) => {
         return new Date(dateString).toLocaleDateString(undefined)
     }
 
+    const toggleHeart = () => {
+        setShowAlert(true);
+    }
+
     return (
     <div className="showcase">
         <div className="display">
@@ -28,7 +35,7 @@ const Showcase = ({ photo }: { photo: Photo["id"] }) => {
                     <h3 className="size">{formatBytes(photo?.sizeInBytes)}</h3>
                 </div>
                 <div className="col-lg-2 favorite-div">
-                    {photo?.favorited ? <img className="heart" src="/heart-full.png" alt="Favorited" /> : <img className="heart" src="/heart-outline.png" alt="Not favorited" onClick={() => dispatch(addToFavorites(photo))}/>}
+                    {photo?.favorited ? <img className="heart" src="/heart-full.png" alt="Favorited" /> : <img className="heart" src="/heart-outline.png" alt="Not favorited" onClick={() => {toggleHeart(); dispatch(addToFavorites(photo))}}/>}
                 </div>
             </div>
         </div>
@@ -51,6 +58,11 @@ const Showcase = ({ photo }: { photo: Photo["id"] }) => {
         <div className="delete">
             <button onClick={() => {dispatch(removePhoto(photo))}} id="delete-button">Delete</button>
         </div>
+        { 
+            showAlert && <div className="alert alert-primary" role="alert">
+            Photo favorited
+            </div>
+        }
     </div>
     );
 }

@@ -17,7 +17,7 @@ const Card = ({photo} : {photo: Photo}) => {
     }
 
     return (
-    <div className="card-outline col-lg-3" onClick={(e) => {selectPhotoCard(photo)}}>
+    <div className="card-outline col-lg-3 col-md-4 col-sm-12" onClick={(e) => {selectPhotoCard(photo)}}>
         <div className={photo.id}>
             <div className="card">
                 <img id={photo.id} src={photo.url} alt={photo.filename} className="image" />

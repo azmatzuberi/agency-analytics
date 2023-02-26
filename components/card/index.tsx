@@ -13,9 +13,7 @@ const Card = ({photo} : {photo: Photo}) => {
     }
     
     const selectPhotoCard = async (photo: Photo) => {
-        console.log(photo)
-        dispatch(selectPhoto(photo))
-        
+        dispatch(selectPhoto(photo))      
     }
 
     return (

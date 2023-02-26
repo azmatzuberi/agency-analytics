@@ -1,9 +1,10 @@
 import * as actionTypes from "./actionTypes"
+import store from "@/store/store-update"
 
 export function addPhotos(photos: Photos) {
-    const action: PhotoAction = {
-        type: actionTypes.ADD_PHOTOS,
-        photos,
+    const action: PhotosAction = {
+      type: actionTypes.ADD_PHOTOS,
+      photos,
     }
     return (dispatch: DispatchType) => {
         dispatch(action)
@@ -12,18 +13,41 @@ export function addPhotos(photos: Photos) {
 
 export function selectPhoto(photo: Photo) {
     const action: PhotoAction = {
-        type: actionTypes.SELECT_PHOTO,
-        photo,
+      type: actionTypes.SELECT_PHOTO,
+      photo,
     }
     return function (dispatch: DispatchType) {
        return dispatch(action)
     }
 }
 
-export function simulateHttpRequest(action: PhotoAction) {
+export function removePhoto(photo: Photo) {
+  const action: PhotoAction = {
+    type: actionTypes.REMOVE_PHOTO,
+    photo,
+  }
+  return function (dispatch: DispatchType) {
+     return dispatch(action)
+  }
+}
+
+export function getFavorites(favorites: Photos) {
+  const action: FavoritesAction = {
+    type: actionTypes.GET_FAVORITES,
+    favorites,
+  }
   return (dispatch: DispatchType) => {
-    setTimeout(() => {
       dispatch(action)
-    }, 500)
+  }
+}
+
+export function addToFavorites(favorite: Photo) {
+  favorite.favorited = true
+  const action: FavoriteAction = {
+    type: actionTypes.ADD_TO_FAVORITES,
+    favorite,
+  }
+  return (dispatch: DispatchType) => {
+      dispatch(action)
   }
 }

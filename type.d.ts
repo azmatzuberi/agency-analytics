@@ -9,28 +9,47 @@ interface Photo {
     dimensions: {width: number, height: number}
     resolution: {width: number, height: number}
     updatedAt: String,
-    favorited: boolean
+    favorited: boolean,
+}
+
+interface Photos {
+    photos: Photo[]
+    map: Function,
+}
+interface Favorite {
+   favorite: {}
+}
+
+interface Favorites {
+    favorites: Photos,
+    map: Function
 }
 
 type PhotoState = {
-    photos: Photo[],
-    photo: Photo
+    photos: Array,
+    photo: Photo,
+    favorites: Array,
+    favorite: Object
+}
+
+type PhotosAction = {
+    type: String,
+    photos: Photos,
 }
 
 type PhotoAction = {
-    type: string,
-    photos: Photos,
-    photo: Photo
+    type: String,
+    photo: Photo,
 }
 
-type PhotoRemoveAction = {
-    type: string
-    photo: Photo
+type FavoritesAction = {
+    type: String,
+    favorites: Photos,
 }
 
-type Photos = {
-    type: array,
-    photos: Photo[]
+type FavoriteAction = {
+    type: String,
+    favorite: Photo,
 }
 
 type DispatchType = (args: PhotoAction) => PhotoAction

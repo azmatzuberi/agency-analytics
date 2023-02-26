@@ -1,6 +1,10 @@
-import Grid from '@/components/grid'
+import PhotoGrid from '@/components/photoGrid'
+import FavoriteGrid from '@/components/favoriteGrid'
 import React from 'react';
-const Header = () => {
+
+const Container = () => {
+
+    const photoCheck: Boolean = false
 
     const setTab = (tab: string) => {
         if (tab === 'tab1') {
@@ -25,14 +29,14 @@ const Header = () => {
                 <label id="label-1" className="selected" htmlFor="tab2-1">Recently added</label>
                 <input id="tab2-1" name="tabs-two" type="radio" defaultChecked onClick={() => {setTab("tab1")}} />
                 <div>
-                    <Grid />
+                    <PhotoGrid />
                 </div>
             </div>
             <div className="tab-2">
-                <label id='label-2' htmlFor="tab2-2">Favorites</label>
+                <label id='label-2' htmlFor="tab2-2">Favorited</label>
                 <input id="tab2-2" name="tabs-two" type="radio" onClick={() => setTab("tab2")} />
                 <div>
-                    <Grid />
+                    <FavoriteGrid />
                 </div>
             </div>
         </div>
@@ -40,4 +44,4 @@ const Header = () => {
     );
 }
 
-export default Header
+export default Container

@@ -10,11 +10,13 @@ const initialState: PhotoState = {
     sizeInBytes: 4076439,
     description: "",
     uploadedBy: "Pauline Kessler",
-    dimensions: {height: 4270, width: 6400},
-    resolution: {height: 72, width: 72},
+    dimensions: { height: 4270, width: 6400 },
+    resolution: { height: 72, width: 72 },
     updatedAt: "2022-06-26T20:14:53.357Z",
     favorited: false,
-  }
+  },
+  favorites: [{}],
+  favorite: {}
 }
 
 const reducer = (
@@ -24,25 +26,35 @@ const reducer = (
     switch (action.type) {
         
         case actionTypes.ADD_PHOTOS:
-            const photos = action.photos
-            return {
-              ...state,
-              photos
-            }
+         const photos = action.photos
+          return {
+            ...state,
+            photos
+          }
         case actionTypes.REMOVE_PHOTO:
-            const updatedPhoto: Photo = state.photos.filter(
-            photo => photo.id !== action.photo.id
-            )
-        return {
-          ...state,
-          photos: updatedPhoto,
-        }
+          const images = state.photos.filter(item => item.id !== action.photo.id)
+          return {
+            ...state,
+            photos: images
+          }
         case actionTypes.SELECT_PHOTO:
             const selectPhoto: Photo = action.photo
-        return {
-          ...state,
-          photo: selectPhoto,
-        }
+          return {
+            ...state,
+            photo: selectPhoto,
+          }
+        case actionTypes.GET_FAVORITES:
+          const favorites = action.favorites
+          return {
+            ...state,
+            favorites
+          }
+        case actionTypes.ADD_TO_FAVORITES:
+          let favorite = action.favorite
+          return {
+            ...state,
+            favorites: [...state.favorites, favorite]
+          }
     default:
         return state
     }

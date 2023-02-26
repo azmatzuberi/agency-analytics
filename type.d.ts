@@ -10,12 +10,9 @@ interface Photo {
     resolution: {width: number, height: number}
     updatedAt: String,
     favorited: boolean,
-    index: number
 }
 
 interface Photos {
-    [x: string]: any;
-    findIndex(arg0: (x: any) => boolean): unknown;
     photos: Photo[],
     map: Function,
 }
@@ -35,10 +32,9 @@ type PhotoState = {
     favorite: Object
 }
 
-interface PhotosAction {
+type PhotosAction = {
     type: String,
     photos: Photos
-    PhotosVar: any
 }
 
 type PhotoAction = {

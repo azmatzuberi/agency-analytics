@@ -6,7 +6,7 @@ export function addPhotos(photos: Photos) {
       type: actionTypes.ADD_PHOTOS,
       photos,
     }
-    return (dispatch: DispatchType) => {
+    return (dispatch: DispatchPhotosType) => {
         dispatch(action)
     }
 }
@@ -36,7 +36,7 @@ export function getFavorites(favorites: Photos) {
     type: actionTypes.GET_FAVORITES,
     favorites,
   }
-  return (dispatch: DispatchType) => {
+  return (dispatch: DispatchFavoritesType) => {
       dispatch(action)
   }
 }
@@ -47,7 +47,7 @@ export function addToFavorites(favorite: Photo) {
     type: actionTypes.ADD_TO_FAVORITES,
     favorite,
   }
-  return (dispatch: DispatchType) => {
+  return (dispatch: DispatchFavoriteType) => {
       dispatch(action)
   }
 }

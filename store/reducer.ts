@@ -32,7 +32,7 @@ const reducer = (
             photos
           }
         case actionTypes.REMOVE_PHOTO:
-          const images = state.photos.filter(item => item.id !== action.photo.id)
+          const images = state.photos.filter((item: Photo) => item.id !== action.photo.id)
           return {
             ...state,
             photos: images

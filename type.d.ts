@@ -13,7 +13,7 @@ interface Photo {
 }
 
 interface Photos {
-    photos: Photo[]
+    photos: Photo[],
     map: Function,
 }
 interface Favorite {
@@ -34,7 +34,7 @@ type PhotoState = {
 
 type PhotosAction = {
     type: String,
-    photos: Photos,
+    photos: Photos
 }
 
 type PhotoAction = {
@@ -53,3 +53,6 @@ type FavoriteAction = {
 }
 
 type DispatchType = (args: PhotoAction) => PhotoAction
+type DispatchPhotosType = (args: PhotosAction) => PhotosAction
+type DispatchFavoriteType = (args: FavoriteAction) => FavoriteAction
+type DispatchFavoritesType = (args: FavoritesAction) => FavoritesAction

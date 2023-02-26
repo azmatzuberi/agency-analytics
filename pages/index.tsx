@@ -15,8 +15,9 @@ const Home = () => {
         },
       })
       const photos = await response.json()
-      photos.sort((a: any, b: any) => a.createdAt - b.createdAt);
-      
+      photos.sort(function(a: any,b: any): any {
+        return +new Date(b.createdAt) - +new Date(a.createdAt);
+      });
       dispatch(addPhotos(photos))
       const favorites = photos.filter((favorite: Photo) => favorite.favorited === true);
       dispatch(getFavorites(favorites))

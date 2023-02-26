@@ -4,8 +4,6 @@ import React from 'react';
 
 const Container = () => {
 
-    const photoCheck: Boolean = false
-
     const setTab = (tab: string) => {
         if (tab === 'tab1') {
             const elem = document.getElementById("label-1") 

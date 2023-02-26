@@ -1,7 +1,11 @@
 import {useAppDispatch} from "@/store/hooks"
 import { selectPhoto } from '@/store/actionCreators';
+import { SetStateAction, useState } from "react";
+import { connect } from 'react-redux'
+import React from "react";
 
 const Card = ({photo} : {photo: Photo}) => {
+
     const dispatch = useAppDispatch();
     function formatBytes(bytes: number, decimals = 2) {
         if (!+bytes) return '0 Bytes'
@@ -12,15 +16,27 @@ const Card = ({photo} : {photo: Photo}) => {
         return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`
     }
     
-    const selectPhotoCard = async (photo: Photo) => {
-        dispatch(selectPhoto(photo))      
+    const selectPhotoCard = async (e: any, photo: Photo) => {
+        dispatch(selectPhoto(photo))
+        const allElements = document.getElementsByClassName('selected-card')
+        const elem: any = document.getElementById(e.id)
+        if(e.id === photo.id){
+            console.log("LLL")
+            Array.from(allElements).
+            forEach((element) => {
+                element.classList.remove('selected-card');
+            })
+            elem?.classList.add('selected-card')
+        }
     }
 
     return (
-    <div className="card-outline col-lg-3 col-md-4 col-sm-12" onClick={(e) => {selectPhotoCard(photo)}}>
+    <div className="card-outline col-lg-3 col-md-4 col-sm-12" onClick={(e) => {selectPhotoCard(e.target, photo)}}>
         <div className={photo.id}>
             <div className="card">
-                <img id={photo.id} src={photo.url} alt={photo.filename} className="image" />
+                <div className="image-outline">
+                    <img id={photo.id} src={photo.url} alt={photo.filename} className="image" />
+                </div>
                 <h3 className="filename">{photo.filename}</h3>
                 <h3 className="size">{formatBytes(photo.sizeInBytes)}</h3>
             </div>
@@ -29,4 +45,10 @@ const Card = ({photo} : {photo: Photo}) => {
     );
 }
 
-export default Card;
+function mapStateToProps(state: any) {
+    return {
+        // photos: state.reducer.photos,
+    };
+}
+
+export default connect(mapStateToProps)(Card);

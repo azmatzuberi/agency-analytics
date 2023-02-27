@@ -22,22 +22,24 @@ const Container = () => {
     return (
     <div className="header">
         <h1>Photos</h1>
-        <div className='tabs'>
-            <div className="tab-2">
-                <label id="label-1" className="selected" htmlFor="tab2-1">Recently Added</label>
-                <input id="tab2-1" name="tabs-two" type="radio" defaultChecked onClick={() => {setTab("tab1")}} />
-                <div>
-                    <PhotoGrid />
+        <header>
+            <div className='tabs'>
+                <div className="tab-2">
+                    <label id="label-1" className="selected" htmlFor="tab2-1">Recently Added</label>
+                    <input id="tab2-1" name="tabs-two" type="radio" defaultChecked onClick={() => {setTab("tab1")}} />
+                    <div>
+                        <PhotoGrid />
+                    </div>
+                </div>
+                <div className="tab-2">
+                    <label id='label-2' htmlFor="tab2-2">Favorited</label>
+                    <input id="tab2-2" name="tabs-two" type="radio" onClick={() => setTab("tab2")} />
+                    <div>
+                        <FavoriteGrid />
+                    </div>
                 </div>
             </div>
-            <div className="tab-2">
-                <label id='label-2' htmlFor="tab2-2">Favorited</label>
-                <input id="tab2-2" name="tabs-two" type="radio" onClick={() => setTab("tab2")} />
-                <div>
-                    <FavoriteGrid />
-                </div>
-            </div>
-        </div>
+        </header>
     </div>
     );
 }

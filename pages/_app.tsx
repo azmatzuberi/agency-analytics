@@ -1,4 +1,4 @@
-import '@/styles/globals.scss'
+import '@/styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import { Provider } from "react-redux";
 

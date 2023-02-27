@@ -28,7 +28,9 @@ const Showcase = ({ photo }: { photo: Photo["id"] }) => {
     return (
     <div className="showcase">
         <div className="display">
-            <img src={photo?.url} alt={photo?.filename} className="image" />
+            <figure>
+                <img src={photo?.url} alt={photo?.filename} className="image" />
+            </figure>
             <div className="row display-panel">
                 <div className="col-lg-10">
                     <h3 className="filename">{photo?.filename}</h3>
@@ -39,22 +41,26 @@ const Showcase = ({ photo }: { photo: Photo["id"] }) => {
                 </div>
             </div>
         </div>
-        <div className="info">
-            <h3>Information</h3>
-            <hr />
-            <div className="row"><div className="col"><h4 className="left">Uploaded by</h4></div><div className="col"><h4 className='right'>{photo?.uploadedBy}</h4></div></div>
-            <hr />
-            <div className="row"><div className="col"><h4 className="left">Last modified</h4></div><div className='col'><h4 className='right'>{formatDate(photo?.updatedAt)}</h4></div></div>
-            <hr />
-            <div className="row"><div className="col"><h4 className="left">Dimensions</h4></div><div className="col"><h4 className='right'>{photo?.dimensions?.width} x {photo?.dimensions?.height}</h4></div></div>
-            <hr />
-            <div className="row"><div className="col"><h4 className="left">Resolution</h4></div><div className="col"><h4 className='right'>{photo?.resolution?.width} x {photo?.resolution?.height}</h4></div></div>
-            <hr />
-        </div>
-        <div className="description">
-            <h3>Description</h3>
-            <p id="description-text">{photo?.description ? photo.description : "No description"}</p>
-        </div>
+        <summary>
+            <div className="info">
+                <h3>Information</h3>
+                <hr />
+                <div className="row"><div className="col"><h4 className="left">Uploaded by</h4></div><div className="col"><h4 className='right'>{photo?.uploadedBy}</h4></div></div>
+                <hr />
+                <div className="row"><div className="col"><h4 className="left">Last modified</h4></div><div className='col'><h4 className='right'>{formatDate(photo?.updatedAt)}</h4></div></div>
+                <hr />
+                <div className="row"><div className="col"><h4 className="left">Dimensions</h4></div><div className="col"><h4 className='right'>{photo?.dimensions?.width} x {photo?.dimensions?.height}</h4></div></div>
+                <hr />
+                <div className="row"><div className="col"><h4 className="left">Resolution</h4></div><div className="col"><h4 className='right'>{photo?.resolution?.width} x {photo?.resolution?.height}</h4></div></div>
+                <hr />
+            </div>
+        </summary>
+        <summary>
+            <div className="description">
+                <h3>Description</h3>
+                <p id="description-text">{photo?.description ? photo.description : "No description"}</p>
+            </div>
+        </summary>
         <div className="delete">
             <button onClick={() => {dispatch(removePhoto(photo))}} id="delete-button">Delete</button>
         </div>

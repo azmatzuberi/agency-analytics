@@ -1,7 +1,5 @@
 import {useAppDispatch} from "@/store/hooks"
 import { selectPhoto } from '@/store/actionCreators';
-import { SetStateAction, useState } from "react";
-import { connect } from 'react-redux'
 import React from "react";
 
 const Card = ({photo} : {photo: Photo}) => {
@@ -21,7 +19,6 @@ const Card = ({photo} : {photo: Photo}) => {
         const allElements = document.getElementsByClassName('selected-card')
         const elem: any = document.getElementById(e.id)
         if(e.id === photo.id){
-            console.log("LLL")
             Array.from(allElements).
             forEach((element) => {
                 element.classList.remove('selected-card');
@@ -35,20 +32,18 @@ const Card = ({photo} : {photo: Photo}) => {
         <div className={photo.id}>
             <div className="card">
                 <div className="image-outline">
-                    <img id={photo.id} src={photo.url} alt={photo.filename} className="image" />
+                    <figure>
+                        <img id={photo.id} src={photo.url} alt={photo.filename} className="image" />
+                    </figure>
                 </div>
-                <h3 className="filename">{photo.filename}</h3>
-                <h3 className="size">{formatBytes(photo.sizeInBytes)}</h3>
+                <figcaption>
+                    <h3 className="filename">{photo.filename}</h3>
+                    <h3 className="size">{formatBytes(photo.sizeInBytes)}</h3>
+                </figcaption>
             </div>
         </div>
     </div>
     );
 }
 
-function mapStateToProps(state: any) {
-    return {
-        // photos: state.reducer.photos,
-    };
-}
-
-export default connect(mapStateToProps)(Card);
+export default Card;

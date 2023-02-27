@@ -37,7 +37,9 @@ const Home = () => {
               <Container />
             </div>
             <div className="showcase-column col-lg-4">
-              <Showcase />
+              <aside>
+                <Showcase />
+              </aside>
             </div>
           </div>
         </section>

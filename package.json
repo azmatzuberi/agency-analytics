@@ -16,20 +16,28 @@
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "bootstrap": "^5.2.3",
-    "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-redux": "^8.0.5",
     "redux": "^4.2.1",
-    "redux-thunk": "^2.4.2",
-    "typescript": "4.9.5"
+    "redux-thunk": "^2.4.2"
   },
   "devDependencies": {
     "@types/react-redux": "^7.1.25",
     "@types/redux": "^3.6.0",
     "@types/redux-thunk": "^2.1.0",
-    "redux-devtools-extension": "^2.13.9"
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "eslint": "^8.35.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-standard-with-typescript": "^34.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.32.2",
+    "prettier": "^2.8.4",
+    "redux-devtools-extension": "^2.13.9",
+    "typescript": "^4.9.5"
   }
 }

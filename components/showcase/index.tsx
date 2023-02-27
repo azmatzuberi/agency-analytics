@@ -56,7 +56,15 @@ const Showcase = ({ photo }: { photo: Photo["id"] }) => {
                     <h3 className="size">{formatBytes(photo?.sizeInBytes)}</h3>
                 </div>
                 <div className="col-lg-2 favorite-div">
-                    {photo?.favorited ? <img className="heart" src="/heart-full.png" alt="Favorited" /> : <img className="heart" src="/heart-outline.png" alt="Not favorited" onClick={() => {toggleHeart(); dispatch(addToFavorites(photo))}}/>}
+                    {photo?.favorited ? <img className="heart" src="/heart-full.png" alt="Favorited" /> : 
+                    <img 
+                        className="heart" 
+                        src="/heart-outline.png" 
+                        alt="Not favorited" 
+                        onClick={() => {
+                            toggleHeart(); 
+                            dispatch(addToFavorites(photo))
+                        }}/>}
                 </div>
             </div>
         </div>
@@ -64,20 +72,49 @@ const Showcase = ({ photo }: { photo: Photo["id"] }) => {
             <div className="info">
                 <h3>Information</h3>
                 <hr />
-                <div className="row"><div className="col"><h4 className="left">Uploaded by</h4></div><div className="col"><h4 className='right'>{photo?.uploadedBy}</h4></div></div>
+                <div className="row">
+                    <div className="col">
+                        <h4 className="left">Uploaded by</h4>
+                    </div>
+                    <div className="col">
+                        <h4 className='right'>{photo?.uploadedBy}</h4>
+                        </div>
+                    </div>
+                    <hr />
+                    <div className="row"><div className="col">
+                        <h4 className="left">Last modified</h4>
+                    </div>
+                    <div className='col'>
+                        <h4 className='right'>{formatDate(photo?.updatedAt)}</h4>
+                    </div>
+                </div>
                 <hr />
-                <div className="row"><div className="col"><h4 className="left">Last modified</h4></div><div className='col'><h4 className='right'>{formatDate(photo?.updatedAt)}</h4></div></div>
+                <div className="row">
+                    <div className="col">
+                        <h4 className="left">Dimensions</h4>
+                    </div>
+                    <div className="col">
+                        <h4 className='right'>{photo?.dimensions?.width} x {photo?.dimensions?.height}</h4>
+                    </div>
+                </div>
                 <hr />
-                <div className="row"><div className="col"><h4 className="left">Dimensions</h4></div><div className="col"><h4 className='right'>{photo?.dimensions?.width} x {photo?.dimensions?.height}</h4></div></div>
-                <hr />
-                <div className="row"><div className="col"><h4 className="left">Resolution</h4></div><div className="col"><h4 className='right'>{photo?.resolution?.width} x {photo?.resolution?.height}</h4></div></div>
+                <div className="row">
+                    <div className="col">
+                        <h4 className="left">Resolution</h4>
+                    </div>
+                    <div className="col">
+                        <h4 className='right'>{photo?.resolution?.width} x {photo?.resolution?.height}</h4>
+                    </div>
+                </div>
                 <hr />
             </div>
         </summary>
         <summary>
             <div className="description">
                 <h3>Description</h3>
-                <p id="description-text">{photo?.description ? photo.description : "No description"}</p>
+                <p id="description-text">
+                    {photo?.description ? photo.description : "No description"}
+                </p>
             </div>
         </summary>
         <div className="delete">
@@ -87,6 +124,7 @@ const Showcase = ({ photo }: { photo: Photo["id"] }) => {
     );
 }
 
+// Data coming in with specific photo data
 function mapStateToProps(state: any) {
     return {
         photo: state.reducer.photo

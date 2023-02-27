@@ -1,15 +1,18 @@
+// Types file
+
+// Photo interface
 interface Photo {
     id: Key | null | undefined,
-    url: string
-    filename: string
+    url: String,
+    filename: String,
     createdAt: String,
-    sizeInBytes: number
-    description: string
-    uploadedBy: string
-    dimensions: {width: number, height: number}
-    resolution: {width: number, height: number}
+    sizeInBytes: Number,
+    description: String,
+    uploadedBy: String,
+    dimensions: {width: number, height: number},
+    resolution: {width: number, height: number},
     updatedAt: String,
-    favorited: boolean,
+    favorited: boolean
 }
 
 interface Photos {
@@ -39,22 +42,21 @@ type PhotosAction = {
 
 type PhotoAction = {
     type: String,
-    photo: Photo,
+    photo: Photo
 }
 
 type FavoritesAction = {
     type: String,
-    favorites: Photos,
+    favorites: Photos
 }
 
 type FavoriteAction = {
     type: String,
-    favorite: Photo,
+    favorite: Photo
 }
 
+// Dispatch types
 type DispatchType = (args: PhotoAction) => PhotoAction
 type DispatchPhotosType = (args: PhotosAction) => PhotosAction
 type DispatchFavoriteType = (args: FavoriteAction) => FavoriteAction
 type DispatchFavoritesType = (args: FavoritesAction) => FavoritesAction
-
-declare module "*.module.css";

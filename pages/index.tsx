@@ -25,8 +25,8 @@ const Home = () => {
         },
       })
       const photos = await response.json()
-      photos.sort(function(a: any,b: any): any {
-        return +new Date(b.createdAt) - +new Date(a.createdAt);
+      photos.sort(function(a: Photo,b: Photo): number {
+        return +new Date(b.createdAt.toString()) - +new Date(a.createdAt.toString());
       });
 
       // Dispatches and sorts of data

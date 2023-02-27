@@ -1,15 +1,33 @@
+@font-face {
+    font-family: 'Alte';
+    src: url('/fonts/alte-hass/Alte-Haas-Grotesk-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'tommy';
+    src: url('/fonts/tommy/TommyMedium.otf');
+}
+
+body {
+    color: #64748B !important;
+}
+
+
 .header {
   margin-top: 2.5rem;
 
   h1 {
       font-size: 2rem;
       margin-left: 25px;
+      font-family: 'Alte'
   }
 
   .tabs {
     margin: 20px 0;
 
     label {
+        font-family: 'tommy';
+        font-weight: 600;
         border-bottom: 1px solid #C3CEDC;
         margin-bottom: -1px;
     }
@@ -24,11 +42,11 @@
 
     #tab2-1 {
         margin-left: 25px;
-        width: 120px;
+        width: 126px;
     }
 
     #tab2-2 {
-        width: 70px;
+        width: 78px;
     }
 
     ul {

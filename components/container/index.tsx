@@ -24,7 +24,7 @@ const Container = () => {
         <h1>Photos</h1>
         <div className='tabs'>
             <div className="tab-2">
-                <label id="label-1" className="selected" htmlFor="tab2-1">Recently added</label>
+                <label id="label-1" className="selected" htmlFor="tab2-1">Recently Added</label>
                 <input id="tab2-1" name="tabs-two" type="radio" defaultChecked onClick={() => {setTab("tab1")}} />
                 <div>
                     <PhotoGrid />

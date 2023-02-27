@@ -3,10 +3,32 @@
 
   h1 {
       font-size: 2rem;
+      margin-left: 25px;
   }
 
   .tabs {
     margin: 30px 0;
+
+    label {
+        border-bottom: 1px solid #C3CEDC;
+    }
+
+    #label-2 {
+        width: 154.5%;
+    }
+
+    #label-1 {
+        margin-left: 22px;
+    }
+
+    #tab2-1 {
+        margin-left: 25px;
+        width: 120px;
+    }
+
+    #tab2-2 {
+        width: 70px;
+    }
 
     ul {
       list-style: none;
@@ -74,6 +96,10 @@
   }
 }
 
+.grid {
+    padding: 0 20px;
+}
+
 .grid-column {
   background-color: rgb(247, 250, 252);
   border-right: 1px solid rgb(231, 236, 242);
@@ -85,6 +111,10 @@
 
   .display-panel {
     margin-top: 30px;
+
+    .filename {
+        color: #231E19;
+    }
   }
 
   h3 {
@@ -93,6 +123,7 @@
   
   h4 {
     font-size: 1rem;
+    color: #677489;
   }
   img {
     border-radius: 10px;
@@ -111,26 +142,34 @@
 
   .size {
     font-size: 1rem;
-    color: grey;
+    color: #526681;
   }
 
   .info {
     .left {
-      color: grey;
+        color: #64748B;
+    }
+    .right {
+        color: #1E293A;
     }
     margin-top: 30px;
   }
 
   .description {
-    margin-top: 30px;
+    margin: 30px 0;
+    color: #111728;
+    
+    #description-text {
+        color: #677489;
+    }
   }
 }
 
 #delete-button {
   width: 100%;
-  border: 1px solid grey;
+  border: 1px solid lightgrey;
   border-radius: 5px;
-  height: 40px;
+  height: 50px;
   background-color: #fff;
 }
 
@@ -164,7 +203,7 @@ select:focus {
   text-align: left;
 }
 .tabs [class^="tab"] [type="radio"], .tabs [class*=" tab"] [type="radio"] {
-  border-bottom: 1px solid rgba(239, 237, 239, 0.5);
+  border-bottom: 1px solid #efedef80;
   cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -222,7 +261,7 @@ input {
 }
 #label-2,
 #tab2-2 {
-  margin-left: -50%;
+  margin-left: -60%;
 }
 
 .alert {

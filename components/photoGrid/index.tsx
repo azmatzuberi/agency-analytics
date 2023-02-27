@@ -6,10 +6,8 @@ const PhotoGrid = ({photos}: {photos: Photos}) => {
  
     return (
         <div className="grid">
-            <div>
-                <div className='row'>
-                    { photos && photos.map((photo: Photo) => <Card key={photo.id} photo={photo} /> )}
-                </div>
+            <div className='row grid-row'>
+                { photos && photos.map((photo: Photo) => <Card key={photo.id} photo={photo} /> )}
             </div>
         </div>
     )

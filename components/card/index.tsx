@@ -1,3 +1,4 @@
+// Imports
 import {useAppDispatch} from "@/store/hooks"
 import { selectPhoto } from '@/store/actionCreators';
 import React from "react";
@@ -5,6 +6,8 @@ import React from "react";
 const Card = ({photo} : {photo: Photo}) => {
 
     const dispatch = useAppDispatch();
+
+    // Display file size correctly
     function formatBytes(bytes: number, decimals = 2) {
         if (!+bytes) return '0 Bytes'
         const k = 1024
@@ -14,6 +17,7 @@ const Card = ({photo} : {photo: Photo}) => {
         return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`
     }
     
+    // Purple outline and photo data sent upon click
     const selectPhotoCard = async (e: any, photo: Photo) => {
         dispatch(selectPhoto(photo))
         const allElements = document.getElementsByClassName('selected-card')

@@ -1,0 +1,16 @@
+.card-outline {
+    width: 200px;
+}
+.card-outline .card {
+    border: none;
+    background-color: #f7fafc;
+}
+.card-outline .selected-card {
+    border: 1px solid purple;
+}
+.card-outline img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    padding: 3px;
+}

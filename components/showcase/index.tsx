@@ -1,11 +1,14 @@
+// Imports
 import {useAppDispatch} from '@/store/hooks';
 import {connect} from 'react-redux'
 import {addToFavorites, removePhoto} from '@/store/actionCreators';
 import React, { useState } from 'react';
 
+// Component aside to display file details
 const Showcase = ({ photo }: { photo: Photo["id"] }) => {
 
     const [showAlert, setShowAlert] = useState(false);
+    const [showAlertDelete, setShowAlertDelete] = useState(false);
 
     const dispatch = useAppDispatch();
     function formatBytes(bytes: number, decimals = 2) {
@@ -21,12 +24,28 @@ const Showcase = ({ photo }: { photo: Photo["id"] }) => {
         return new Date(dateString).toLocaleDateString(undefined)
     }
 
+    // Shows alert when pressing heart
     const toggleHeart = () => {
         setShowAlert(true);
     }
 
+    // Shows alert when deleted
+    const deleteAlert = () => {
+        setShowAlertDelete(true);
+    }
+
     return (
     <div className="showcase">
+        { 
+            showAlert && <div className="alert alert-primary" role="alert">
+                Photo favorited
+            </div>
+        }
+        { 
+            showAlertDelete && <div className="alert alert-danger" role="alert">
+                Photo Deleted
+            </div>
+        }
         <div className="display">
             <figure>
                 <img src={photo?.url} alt={photo?.filename} className="image" />
@@ -62,13 +81,8 @@ const Showcase = ({ photo }: { photo: Photo["id"] }) => {
             </div>
         </summary>
         <div className="delete">
-            <button onClick={() => {dispatch(removePhoto(photo))}} id="delete-button">Delete</button>
+            <button onClick={() => {dispatch(removePhoto(photo)); deleteAlert()}} id="delete-button">Delete</button>
         </div>
-        { 
-            showAlert && <div className="alert alert-primary" role="alert">
-            Photo favorited
-            </div>
-        }
     </div>
     );
 }

@@ -1,10 +1,16 @@
+/*
+Author: Azmat Zuberi
+Date: Feb. 27, 2023
+App Name: AgencyAnalytics - Code Challenge
+*/
+
 /** @type {import('next').NextConfig} */
 const path = require('path');
 
 const nextConfig = {
   reactStrictMode: true,
-  sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
+  compilerOptions: {
+    plugins: [{ "name": "typescript-plugin-css-modules" }]
   },
   output: 'standalone'
 }

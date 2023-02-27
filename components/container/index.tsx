@@ -1,9 +1,11 @@
+// Imports
 import PhotoGrid from '@/components/photoGrid'
 import FavoriteGrid from '@/components/favoriteGrid'
 import React from 'react';
 
 const Container = () => {
 
+    // Tab selection
     const setTab = (tab: string) => {
         if (tab === 'tab1') {
             const elem = document.getElementById("label-1") 

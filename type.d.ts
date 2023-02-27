@@ -56,3 +56,5 @@ type DispatchType = (args: PhotoAction) => PhotoAction
 type DispatchPhotosType = (args: PhotosAction) => PhotosAction
 type DispatchFavoriteType = (args: FavoriteAction) => FavoriteAction
 type DispatchFavoritesType = (args: FavoritesAction) => FavoritesAction
+
+declare module "*.module.css";

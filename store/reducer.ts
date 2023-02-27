@@ -1,5 +1,7 @@
+// Importing action types
 import * as actionTypes from "./actionTypes"
 
+// Initial store state
 const initialState: PhotoState = {
   photos: [],
   photo: {
@@ -19,6 +21,7 @@ const initialState: PhotoState = {
   favorite: {}
 }
 
+// Reducer
 const reducer = (
     state: PhotoState = initialState,
     action: any

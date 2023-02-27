@@ -1,3 +1,10 @@
+/*
+Author: Azmat Zuberi
+Date: Feb. 27, 2023
+App Name: AgencyAnalytics - Code Challenge
+*/
+
+// Imports
 import Head from 'next/head'
 import Container from '@/components/container'
 import Showcase from '@/components/showcase';
@@ -5,8 +12,11 @@ import {useAppDispatch} from "@/store/hooks"
 import {addPhotos, getFavorites} from '@/store/actionCreators';
 import React from 'react';
 
+// Main component
 const Home = () => {
     const dispatch = useAppDispatch();
+
+    // Async call to API server
     React.useEffect = async () => {
       const response = await fetch('https://agencyanalytics-api.vercel.app/images.json', {
       method: 'GET',
@@ -18,6 +28,8 @@ const Home = () => {
       photos.sort(function(a: any,b: any): any {
         return +new Date(b.createdAt) - +new Date(a.createdAt);
       });
+
+      // Dispatches and sorts of data
       dispatch(addPhotos(photos))
       const favorites = photos.filter((favorite: Photo) => favorite.favorited === true);
       dispatch(getFavorites(favorites))

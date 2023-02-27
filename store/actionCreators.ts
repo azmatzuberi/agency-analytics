@@ -1,6 +1,7 @@
+// Actions
 import * as actionTypes from "./actionTypes"
-import store from "@/store/store-update"
 
+// Adds photos to Redux
 export function addPhotos(photos: Photos) {
     const action: PhotosAction = {
       type: actionTypes.ADD_PHOTOS,
@@ -11,6 +12,7 @@ export function addPhotos(photos: Photos) {
     }
 }
 
+// Enters data when photo is clicked
 export function selectPhoto(photo: Photo) {
     const action: PhotoAction = {
       type: actionTypes.SELECT_PHOTO,
@@ -21,6 +23,7 @@ export function selectPhoto(photo: Photo) {
     }
 }
 
+// Deletes a photo from grid
 export function removePhoto(photo: Photo) {
   const action: PhotoAction = {
     type: actionTypes.REMOVE_PHOTO,
@@ -31,6 +34,7 @@ export function removePhoto(photo: Photo) {
   }
 }
 
+// Adds the favorite images to Redux
 export function getFavorites(favorites: Photos) {
   const action: FavoritesAction = {
     type: actionTypes.GET_FAVORITES,
@@ -41,6 +45,7 @@ export function getFavorites(favorites: Photos) {
   }
 }
 
+// Adds clicked image to favorites in Redux
 export function addToFavorites(favorite: Photo) {
   const action: FavoriteAction = {
     type: actionTypes.ADD_TO_FAVORITES,

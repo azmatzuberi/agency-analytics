@@ -3,10 +3,10 @@
 // Photo interface
 interface Photo {
     id: Key | null | undefined,
-    url: String,
-    filename: String,
+    url: string,
+    filename: string,
     createdAt: String,
-    sizeInBytes: Number,
+    sizeInBytes: number,
     description: String,
     uploadedBy: String,
     dimensions: {width: number, height: number},
